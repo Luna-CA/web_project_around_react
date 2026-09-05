@@ -1,37 +1,33 @@
 export default function NewCard() {
   return (
-    <form
-      className="popup__form"
-      id="new-card-form"
-      name="card-form"
-      noValidate
-    >
-      <label className="popup__field">
+    <form className="popup__form" id="edit-profile-form" name="edit-form">
+      <label class="popup__field">
         <input
-          className="popup__input popup__input_type_card-name"
-          id="card-name"
-          maxLength="30"
-          minLength="1"
-          name="card-name"
-          placeholder="Title"
-          required
+          className="popup__input"
+          id="profile-name"
+          name="name"
+          placeholder="Nome"
           type="text"
-        />
-        <span className="popup__error" id="card-name-error"></span>
-      </label>
-      <label className="popup__field">
-        <input
-          className="popup__input popup__input_type_url"
-          id="card-link"
-          name="link"
-          placeholder="Image link"
           required
-          type="url"
+          minlength="2"
+          maxlength="40"
         />
-        <span className="popup__error" id="card-link-error"></span>
+        <span class="popup__input-error profile-name-error"></span>
       </label>
-
-      <button className="button popup__button" type="submit">
+      <label class="popup__field">
+        <input
+          className="popup__input"
+          id="profile-description"
+          name="job"
+          placeholder="link"
+          type="text"
+          required
+          minlength="2"
+          maxlength="200"
+        />
+        <span className="popup__input-error profile-description-error"></span>
+      </label>
+      <button type="submit" className="popup__submit">
         Salvar
       </button>
     </form>

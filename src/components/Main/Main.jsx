@@ -5,6 +5,27 @@ import EditAvatar from "./components/Popup/components/EditAvatar/EditAvatar";
 import NewCard from "./components/Popup/components/NewCard/NewCard";
 import avatar from "../../images/avatar-img.jpeg";
 
+const cards = [
+  {
+    isLiked: false,
+    _id: "5d1f0611d321eb4bdcd707dd",
+    name: "Yosemite Valley",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
+    owner: "5d1f0611d321eb4bdcd707dd",
+    createdAt: "2019-07-05T08:10:57.741Z",
+  },
+  {
+    isLiked: false,
+    _id: "5d1f064ed321eb4bdcd707de",
+    name: "Lake Louise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
+    owner: "5d1f0611d321eb4bdcd707dd",
+    createdAt: "2019-07-05T08:11:58.324Z",
+  },
+];
+
+console.log(cards);
+
 export default function Main() {
   const [popup, setPopup] = useState(null);
   const newCardPopup = { title: "New card", children: <NewCard /> };
@@ -20,12 +41,12 @@ export default function Main() {
   }
 
   return (
-    <main className="content">
+    <main className="content page__content">
       <section className="profile page__section">
-        <div className="profile__avatar">
+        <div className="profile profile__avatar">
           <button
             aria-label="Editar avatar"
-            className="profile__edit-button"
+            className="profile__avatar-button"
             type="button"
             onClick={() => handleOpenPopup(editAvatarPopup)}
           >
@@ -50,7 +71,11 @@ export default function Main() {
         ></button>
       </section>
       <section className="cards page__section">
-        <ul className="cards__list"></ul>
+        <ul className="cards__list">
+          {cards.map((card) => (
+            <Card key={card._id} card={card} />
+          ))}
+        </ul>
         <template id="card-template">
           <li className="card">
             <img className="card__image" src="" alt="" />
