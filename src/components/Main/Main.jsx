@@ -4,6 +4,8 @@ import EditProfile from "./components/Popup/components/EditProfile/EditProfile";
 import EditAvatar from "./components/Popup/components/EditAvatar/EditAvatar";
 import NewCard from "./components/Popup/components/NewCard/NewCard";
 import avatar from "../../images/avatar-img.jpeg";
+import ImagePopup from "./components/Popup/components/ImagePopup/ImagePopup";
+import Card from "./components/Card/Card";
 
 const cards = [
   {
@@ -34,6 +36,12 @@ export default function Main() {
 
   function handleOpenPopup(popup) {
     setPopup(popup);
+  }
+
+  function handleCardClick(card) {
+    setPopup({
+      children: <ImagePopup card={card} onClose={handleClosePopup} />,
+    });
   }
 
   function handleClosePopup() {
@@ -73,7 +81,7 @@ export default function Main() {
       <section className="cards page__section">
         <ul className="cards__list">
           {cards.map((card) => (
-            <Card key={card._id} card={card} />
+            <Card key={card._id} card={card} onCardClick={handleCardClick} />
           ))}
         </ul>
         <template id="card-template">
